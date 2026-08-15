@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Privacy policy for Pip, an ADHD task-initiation app. Nothing you type leaves your phone.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%94%A5</text></svg>">
+<title>Pip Privacy Policy</title>
+<style>
+  :root {
+    --ground: #FAF6EF;
+    --card: #FFFFFF;
+    --ink: #241F18;
+    --muted: #8A8073;
+    --faint: #B3A897;
+    --line: #EAE1D2;
+    --ember: #E2542F;
+    --ember-soft: #FDEAE3;
+    --sage: #5F7D60;
+    --sage-soft: #E9F0E6;
+    --shadow: 0 10px 30px rgba(36, 31, 24, 0.05);
+
+    --display: ui-rounded, "SF Pro Rounded", "Hiragino Maru Gothic ProN", "Segoe UI", system-ui, sans-serif;
+    --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #17130F;
+      --card: #211B15;
+      --ink: #F2EDE4;
+      --muted: #A2978A;
+      --faint: #6F6559;
+      --line: #322A22;
+      --ember: #FF8A66;
+      --ember-soft: #3A231B;
+      --sage: #9EBB9E;
+      --sage-soft: #212A20;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #17130F;
+    --card: #211B15;
+    --ink: #F2EDE4;
+    --muted: #A2978A;
+    --faint: #6F6559;
+    --line: #322A22;
+    --ember: #FF8A66;
+    --ember-soft: #3A231B;
+    --sage: #9EBB9E;
+    --sage-soft: #212A20;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.65;
+    margin: 0;
+    padding: 0 24px 96px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 41rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+  }
+
+  /* ---------- masthead ---------- */
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding-top: 64px;
+  }
+
+  .mark {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+  }
+
+  .mark svg { display: block; }
+
+  .mark span {
+    font-family: var(--display);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(31px, 6.5vw, 42px);
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .stamp {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--faint);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .lede {
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+    max-width: 34rem;
+  }
+
+  /* ---------- sections ---------- */
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  h2 {
+    font-family: var(--display);
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.012em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  p { margin: 0; }
+
+  p + p { margin-top: -2px; }
+
+  a {
+    color: var(--ember);
+    text-decoration-color: color-mix(in srgb, var(--ember) 40%, transparent);
+    text-underline-offset: 3px;
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--ember);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  strong { font-weight: 700; }
+
+  /* ---------- the empty ledger ---------- */
+  .ledger {
+    background: var(--card);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+    padding: 26px 26px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .ledger-head {
+    font-family: var(--display);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+  }
+
+  ul.crossed {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr));
+    gap: 9px 22px;
+  }
+
+  ul.crossed li {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 15.5px;
+    color: var(--faint);
+    text-decoration: line-through;
+    text-decoration-color: color-mix(in srgb, var(--sage) 60%, transparent);
+    text-decoration-thickness: 1.5px;
+  }
+
+  ul.crossed li::before {
+    content: "✓";
+    color: var(--sage);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    flex: none;
+  }
+
+  .ledger-foot {
+    font-size: 14.5px;
+    color: var(--sage);
+    font-weight: 600;
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+  }
+
+  /* ---------- disclosure card (the exceptions) ---------- */
+  .exception {
+    background: var(--card);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .exception h3 {
+    font-family: var(--display);
+    font-size: 16.5px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .exception p {
+    font-size: 15.5px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .tag {
+    align-self: flex-start;
+    background: var(--ember-soft);
+    color: var(--ember);
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 3px;
+  }
+
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+
+  /* ---------- footer ---------- */
+  footer {
+    border-top: 1px solid var(--line);
+    padding-top: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 14.5px;
+    color: var(--muted);
+  }
+
+  footer .sig {
+    font-family: var(--display);
+    color: var(--faint);
+    font-size: 13.5px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 480px) {
+    body { font-size: 16.5px; padding: 0 20px 72px; }
+    header { padding-top: 48px; }
+    .wrap { gap: 38px; }
+  }
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header>
+    <div class="mark">
+      <svg width="30" height="30" viewBox="0 0 1024 1024" aria-hidden="true">
+        <path d="M512 118 C 575 185 595 238 595 278 A 83 83 0 1 1 429 278 C 429 238 449 185 512 118 Z" fill="#FFB86B"/>
+        <ellipse cx="512" cy="565" rx="302" ry="286" fill="#FF7A52"/>
+        <ellipse cx="415" cy="445" rx="125" ry="98" fill="#FFA37E" opacity="0.55"/>
+        <rect x="388" y="478" width="54" height="98" rx="27" fill="#241F18"/>
+        <rect x="582" y="478" width="54" height="98" rx="27" fill="#241F18"/>
+        <path d="M 458 645 Q 512 692 566 645" stroke="#241F18" stroke-width="24" stroke-linecap="round" fill="none"/>
+      </svg>
+      <span>pip</span>
+    </div>
+
+    <div class="stamp">Privacy Policy · Last updated 16 August 2026</div>
+    <h1>Everything you type into Pip stays on your phone.</h1>
+    <p class="lede">
+      Pip helps you start tasks. To do that it reads the messy things you dump into it —
+      which is exactly why none of it is sent anywhere. There is no account to create, no
+      server of ours to store it on, and no analytics watching you use it.
+    </p>
+  </header>
+
+  <section>
+    <h2>What Pip collects about you</h2>
+    <p>Nothing. Here is the list in full, so you can check it against what you expected:</p>
+
+    <div class="ledger">
+      <div class="ledger-head">Never collected, never transmitted</div>
+      <ul class="crossed">
+        <li>Your name</li>
+        <li>Your email address</li>
+        <li>An account or password</li>
+        <li>Your brain dumps</li>
+        <li>Your tasks</li>
+        <li>Your session history</li>
+        <li>Location</li>
+        <li>Contacts</li>
+        <li>Photos or camera</li>
+        <li>Health or fitness data</li>
+        <li>Advertising identifiers</li>
+        <li>Usage or behavioural analytics</li>
+      </ul>
+      <div class="ledger-foot">
+        Pip has no analytics SDK, no advertising SDK, and no crash-reporting SDK.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Where your data actually lives</h2>
+    <p>
+      Your brain dumps, tasks, drawer items and focus sessions are written to a database
+      file inside Pip's own storage on your device. That file never leaves the phone. It is
+      covered by your device passcode and by iOS's standard app sandboxing, and it is
+      included in your iPhone backup only if you have backups switched on — in which case
+      it is governed by Apple's backup encryption, not by us.
+    </p>
+    <p>
+      We cannot read your data. Not because we promise not to, but because we never receive
+      a copy of it.
+    </p>
+  </section>
+
+  <section>
+    <h2>How the AI works</h2>
+    <p>
+      Pip turns what you write into a single small first step. That processing happens
+      <strong>entirely on your device</strong> — either with Pip's built-in logic or, on
+      supported iPhones, with Apple's on-device Foundation Models.
+    </p>
+    <p>
+      Your text is <strong>never sent to any third-party AI service</strong>. Not to OpenAI,
+      not to Anthropic, not to Google, not to us. If that ever changes, Pip will ask for your
+      explicit permission first and this policy will be updated before it does.
+    </p>
+  </section>
+
+  <section>
+    <h2>The exceptions, in plain terms</h2>
+    <p>
+      Two things involve companies other than us. Neither one sends them anything you wrote.
+    </p>
+
+    <div class="stack">
+      <div class="exception">
+        <span class="tag">If you subscribe</span>
+        <h3>Apple and RevenueCat handle the payment</h3>
+        <p>
+          Pip Pro is billed by Apple through your App Store account. We never see your card
+          details. To check whether your subscription is active, Pip uses RevenueCat, which
+          receives a randomly generated anonymous ID and Apple's purchase receipt. It does
+          not receive your name, your email, or anything you have written in the app. Apple's
+          own handling of the transaction is covered by Apple's privacy policy.
+        </p>
+      </div>
+
+      <div class="exception">
+        <span class="tag">If you email us</span>
+        <h3>Support messages</h3>
+        <p>
+          If you write to us for help, we will have your email address and whatever you chose
+          to tell us. We use it to answer you and nothing else.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Notifications</h2>
+    <p>
+      Pip's reminders are scheduled locally on your device and are never sent through a push
+      server. They contain no personal content, they never tell you what you failed to do,
+      and you can turn them off in iOS Settings at any time.
+    </p>
+  </section>
+
+  <section>
+    <h2>Deleting everything</h2>
+    <p>
+      Open <strong>Settings → Erase all data</strong> in Pip to wipe every task, session and
+      drawer item immediately. Deleting the app from your phone also removes the database
+      permanently. Because we hold no copy, there is nothing left for you to request from us
+      and nothing for us to delete on our side.
+    </p>
+  </section>
+
+  <section>
+    <h2>Children</h2>
+    <p>
+      Pip is made for adults and is not directed at children under 13. We do not knowingly
+      collect information from children — which is straightforward here, since we do not
+      knowingly collect information from anyone.
+    </p>
+  </section>
+
+  <section>
+    <h2>Your rights</h2>
+    <p>
+      Privacy laws such as the GDPR and the CCPA give you the right to access, correct,
+      export or delete the personal data a company holds about you. In Pip's case those
+      rights are satisfied by design: the only copy of your data is already in your hands,
+      on your device. We do not sell or share personal information, and there is nothing to
+      opt out of.
+    </p>
+  </section>
+
+  <section>
+    <h2>Changes to this policy</h2>
+    <p>
+      If Pip ever gains a feature that changes how data is handled — syncing between devices,
+      for example — this page will be updated before that feature ships, and the app will ask
+      for your consent rather than assume it. The date at the top always reflects the current
+      version.
+    </p>
+  </section>
+
+  <footer>
+    <div>Questions about any of this: <a href="mailto:guvenser09@gmail.com">guvenser09@gmail.com</a></div>
+    <div>Pip · com.guvenser.pip</div>
+    <div class="sig">made with a small flame</div>
+  </footer>
+</div>
+
+</body>
+</html>
