@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Support for Pip, an ADHD task-initiation app.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%94%A5</text></svg>">
+<title>Pip Support</title>
+<style>
+  :root {
+    --ground: #FAF6EF;
+    --card: #FFFFFF;
+    --ink: #241F18;
+    --muted: #8A8073;
+    --faint: #B3A897;
+    --line: #EAE1D2;
+    --ember: #E2542F;
+    --ember-soft: #FDEAE3;
+    --sage: #5F7D60;
+    --sage-soft: #E9F0E6;
+    --shadow: 0 10px 30px rgba(36, 31, 24, 0.05);
+
+    --display: ui-rounded, "SF Pro Rounded", "Hiragino Maru Gothic ProN", "Segoe UI", system-ui, sans-serif;
+    --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #17130F;
+      --card: #211B15;
+      --ink: #F2EDE4;
+      --muted: #A2978A;
+      --faint: #6F6559;
+      --line: #322A22;
+      --ember: #FF8A66;
+      --ember-soft: #3A231B;
+      --sage: #9EBB9E;
+      --sage-soft: #212A20;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #17130F;
+    --card: #211B15;
+    --ink: #F2EDE4;
+    --muted: #A2978A;
+    --faint: #6F6559;
+    --line: #322A22;
+    --ember: #FF8A66;
+    --ember-soft: #3A231B;
+    --sage: #9EBB9E;
+    --sage-soft: #212A20;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.65;
+    margin: 0;
+    padding: 0 24px 96px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 41rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+  }
+
+  /* ---------- masthead ---------- */
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding-top: 64px;
+  }
+
+  .mark {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+  }
+
+  .mark svg { display: block; }
+
+  .mark span {
+    font-family: var(--display);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(31px, 6.5vw, 42px);
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .stamp {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--faint);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .lede {
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+    max-width: 34rem;
+  }
+
+  /* ---------- sections ---------- */
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  h2 {
+    font-family: var(--display);
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.012em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  p { margin: 0; }
+
+  p + p { margin-top: -2px; }
+
+  a {
+    color: var(--ember);
+    text-decoration-color: color-mix(in srgb, var(--ember) 40%, transparent);
+    text-underline-offset: 3px;
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--ember);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  strong { font-weight: 700; }
+
+  /* ---------- the empty ledger ---------- */
+  .ledger {
+    background: var(--card);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+    padding: 26px 26px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .ledger-head {
+    font-family: var(--display);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+  }
+
+  ul.crossed {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr));
+    gap: 9px 22px;
+  }
+
+  ul.crossed li {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 15.5px;
+    color: var(--faint);
+    text-decoration: line-through;
+    text-decoration-color: color-mix(in srgb, var(--sage) 60%, transparent);
+    text-decoration-thickness: 1.5px;
+  }
+
+  ul.crossed li::before {
+    content: "✓";
+    color: var(--sage);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    flex: none;
+  }
+
+  .ledger-foot {
+    font-size: 14.5px;
+    color: var(--sage);
+    font-weight: 600;
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+  }
+
+  /* ---------- disclosure card (the exceptions) ---------- */
+  .exception {
+    background: var(--card);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .exception h3 {
+    font-family: var(--display);
+    font-size: 16.5px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .exception p {
+    font-size: 15.5px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .tag {
+    align-self: flex-start;
+    background: var(--ember-soft);
+    color: var(--ember);
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 3px;
+  }
+
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+
+  /* ---------- footer ---------- */
+  footer {
+    border-top: 1px solid var(--line);
+    padding-top: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 14.5px;
+    color: var(--muted);
+  }
+
+  footer .sig {
+    font-family: var(--display);
+    color: var(--faint);
+    font-size: 13.5px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 480px) {
+    body { font-size: 16.5px; padding: 0 20px 72px; }
+    header { padding-top: 48px; }
+    .wrap { gap: 38px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="mark">
+      <svg width="30" height="30" viewBox="0 0 1024 1024" aria-hidden="true">
+        <path d="M512 118 C 575 185 595 238 595 278 A 83 83 0 1 1 429 278 C 429 238 449 185 512 118 Z" fill="#FFB86B"/>
+        <ellipse cx="512" cy="565" rx="302" ry="286" fill="#FF7A52"/>
+        <ellipse cx="415" cy="445" rx="125" ry="98" fill="#FFA37E" opacity="0.55"/>
+        <rect x="388" y="478" width="54" height="98" rx="27" fill="#241F18"/>
+        <rect x="582" y="478" width="54" height="98" rx="27" fill="#241F18"/>
+        <path d="M 458 645 Q 512 692 566 645" stroke="#241F18" stroke-width="24" stroke-linecap="round" fill="none"/>
+      </svg>
+      <span>pip</span>
+    </div>
+    <div class="stamp">Support</div>
+    <h1>Something not working? Write to us.</h1>
+    <p class="lede">
+      Pip is made by one person. Email lands with a human, and you will get a
+      real answer — usually within a couple of days.
+    </p>
+  </header>
+
+  <section>
+    <h2>Email</h2>
+    <p><a href="mailto:guvenser09@gmail.com">guvenser09@gmail.com</a></p>
+    <p>
+      Telling us your iPhone model and iOS version makes bugs much faster to
+      track down. You never need to send us your tasks — and we could not read
+      them anyway, since they never leave your phone.
+    </p>
+  </section>
+
+  <section>
+    <h2>Common questions</h2>
+
+    <div class="stack">
+      <div class="exception">
+        <h3>Is Pip really free?</h3>
+        <p>
+          Yes, permanently. Unlimited brain dumps and three start-togethers a
+          day cost nothing and always will. Pip Pro adds unlimited starts, all
+          the pip friends and hats, and calendar sync when it ships.
+        </p>
+      </div>
+
+      <div class="exception">
+        <h3>How do I cancel Pip Pro?</h3>
+        <p>
+          iPhone Settings → tap your name → Subscriptions → Pip → Cancel.
+          Cancelling during the 14-day trial costs you nothing. Apple handles
+          all billing; we cannot see or charge your card.
+        </p>
+      </div>
+
+      <div class="exception">
+        <h3>I paid but Pro isn't showing.</h3>
+        <p>
+          Open Pip → Settings → Restore purchases. If it still doesn't appear,
+          email us and we'll sort it out.
+        </p>
+      </div>
+
+      <div class="exception">
+        <h3>Can I get my data back after deleting the app?</h3>
+        <p>
+          No, and we want to be upfront about it: everything lives only on your
+          phone, so deleting the app deletes the data. That is the trade for
+          Pip having no account and no server.
+        </p>
+      </div>
+
+      <div class="exception">
+        <h3>Is Pip a medical app?</h3>
+        <p>
+          No. Pip is a productivity tool built with executive-function-friendly
+          patterns. It does not diagnose or treat anything, and it is not a
+          substitute for care from a professional.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Privacy</h2>
+    <p>
+      Nothing you type into Pip leaves your phone. The full policy is at
+      <a href="./">the privacy page</a>.
+    </p>
+  </section>
+
+  <footer>
+    <div>Pip · com.guvenser.pip</div>
+    <div class="sig">made with a small flame</div>
+  </footer>
+</div>
+</body>
+</html>
